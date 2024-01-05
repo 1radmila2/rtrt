@@ -1,13 +1,20 @@
-/* Header.css */
+
 .main-header {
   background-color: #f8f1e6;
   padding: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden; /* Предотвращает выход за пределы рамок */
+  overflow: hidden;
+}
+
+.search-bar,
+.logo,
+.user-info {
+  margin: 0 10px;
 }
 
 .logo {
@@ -29,7 +36,8 @@
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  flex-grow: 1; /* Занимает все доступное пространство */
+  flex-grow: 1;
+  margin-right: 5px;
 }
 
 .search-bar button {
@@ -61,7 +69,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #4caf50;
+  color: #006400;
 }
 
 .user-info {
@@ -82,6 +90,7 @@ nav a:hover {
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .logout-button:hover {
@@ -99,30 +108,180 @@ nav a:hover {
   color: #4caf50;
 }
 
+.category-button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.category-button.selected {
+  background-color: #3462b9;
+}
+
+.category-button:hover {
+  background-color: #006400;
+}
+
+.cart-link button {
+  background-color: #4caf50; 
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-link button:hover {
+  background-color: #006400; 
+}
 @media (max-width: 768px) {
-  /* Стили для экранов с шириной до 768px */
+  .search-bar,
+  .logo,
+  .user-info {
+  margin: 0 10px; 
+}
+  .main-header {
+    background-color: #f8f1e6;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .logo {
+    max-width: 150px;
+  }
+  
+  .logo img {
+    max-width: 100%;
+  }
+  
   .search-bar {
-    flex-direction: column; /* Переключение на вертикальное расположение на мобильных устройствах */
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
   }
-
-  .search-bar input,
+  
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    flex-grow: 1;
+  }
+  
   .search-bar button {
-    margin: 10px 0; /* Дополнительный отступ между полем ввода и кнопкой */
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
   }
-
+  
   nav ul {
-    flex-direction: column; /* Переключение на вертикальное расположение на мобильных устройствах */
+    list-style: none;
+    display: flex;
+    align-items: center;
   }
-
+  
   nav ul li {
-    margin-right: 0; /* Удаление отступа между элементами меню на мобильных устройствах */
+    margin-right: 20px;
   }
-
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #006400;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info span {
+    margin-right: 10px;
+    color: #4d4d4d;
+    font-size: 14px;
+  }
+  
+  .logout-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .cart-link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-link span {
+    font-size: 24px;
+    margin-right: 5px;
+    color: #4caf50;
+  }
+  
+  .category-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  .category-button.selected {
+    background-color: #3462b9;
+  }
+  
+  .category-button:hover {
+    background-color: #006400;
+  }
+  
+  .cart-link button {
+    background-color: #4caf50; 
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cart-link button:hover {
+    background-color: #006400; 
+  }
   nav a,
   .user-info span,
   .logout-button,
   .cart-link span {
-    font-size: 14px; /* Уменьшение размера шрифта на мобильных устройствах */
+    font-size: 14px; 
   }
 }
 
