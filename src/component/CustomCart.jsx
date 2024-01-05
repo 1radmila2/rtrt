@@ -1,24 +1,32 @@
-// Cart.js
 import React, { useState } from 'react';
 import './Cart.css';
 
 function Cart() {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Product 1', price: 100.00, quantity: 2 },
-    { id: 2, name: 'Product 2', price: 150.00, quantity: 1 },
-    // Добавьте свои товары в корзину
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const updateQuantity = (productId, newQuantity) => {
-    const updatedCart = cartItems.map(item =>
+    const updatedCart = cartItems.map((item) =>
       item.id === productId ? { ...item, quantity: Math.max(1, newQuantity) } : item
     );
     setCartItems(updatedCart);
   };
 
   const removeFromCart = (productId) => {
-    const updatedCart = cartItems.filter(item => item.id !== productId);
+    const updatedCart = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCart);
+  };
+
+  const addToCart = (selectedProduct) => {
+    // Check if the product is already in the cart
+    const existingItem = cartItems.find((item) => item.id === selectedProduct.id);
+
+    if (existingItem) {
+      // If the product is already in the cart, update the quantity
+      updateQuantity(existingItem.id, existingItem.quantity + 1);
+    } else {
+      // If the product is not in the cart, add it
+      setCartItems((prevCart) => [...prevCart, { ...selectedProduct, quantity: 1 }]);
+    }
   };
 
   const calculateTotal = () => {
@@ -30,7 +38,6 @@ function Cart() {
   };
 
   const handleCheckout = () => {
-    // Добавьте свой код для обработки оформления заказа
     alert('Checkout functionality is not implemented yet!');
   };
 
@@ -46,7 +53,7 @@ function Cart() {
         <p>Your cart is empty</p>
       ) : (
         <div>
-          {cartItems.map(item => (
+          {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
               <div className="item-details">
                 <p>{item.name}</p>
@@ -64,19 +71,13 @@ function Cart() {
             <div className="cart-details">
               <p>Total Items: {calculateTotalItems()}</p>
               <p>Subtotal: ${calculateTotal()}</p>
-              <p>Tax (50%): ${(calculateTotal() * 0.50).toFixed(2)}</p>
             </div>
-            <div className="promo-code">
-              <input type="text" placeholder="Enter promo code" />
-              <button>Apply</button>
-            </div>
-            <p className="total">Total: ${(calculateTotal() * 1.50).toFixed(2)}</p>
+            <button className="checkout-button" onClick={handleCheckout}>
+              <span role="img" aria-label="Checkout">
+                🛍️ Checkout
+              </span>
+            </button>
           </div>
-          <button className="checkout-button" onClick={handleCheckout}>
-            <span role="img" aria-label="Checkout">
-              🛍️ Checkout
-            </span>
-          </button>
         </div>
       )}
     </section>
@@ -84,3 +85,4 @@ function Cart() {
 }
 
 export default Cart;
+
