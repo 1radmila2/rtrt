@@ -13,9 +13,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <ProductList />
-      </main>
       <Footer />
     </div>
   );
